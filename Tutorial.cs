@@ -197,6 +197,7 @@ public class Tutorial : MonoBehaviour
     public void NextStep()
     {
         if (isActive) return;
+        
         isActive = true;
 
         if (currentStep < steps.Count)
@@ -254,6 +255,7 @@ public class Tutorial : MonoBehaviour
         if (step.clickToContinue)
         {
             yield return new WaitForSeconds(0.5f);
+            
             while (!Input.GetMouseButtonUp(0))
             {
                 yield return null;
@@ -281,7 +283,7 @@ public class Tutorial : MonoBehaviour
     }
 
   public void EndTutorial()
-    {
+  {
         // Clean up and deactivate the tutorial
         for (int i = 0; i < steps.Count; i++)
         {
@@ -305,6 +307,7 @@ public class Tutorial : MonoBehaviour
         }
 
         gameObject.SetActive(false);
+        
         if (onDemand) Game.instance.ui.tutorialButton.SetActive(false);
 
         // Invoke the OnTutorialEnded event if there are any listeners
@@ -314,4 +317,3 @@ public class Tutorial : MonoBehaviour
         }
     }
 }
-
